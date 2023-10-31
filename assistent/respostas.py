@@ -1,5 +1,6 @@
 import datetime
 import requests
+import pyautogui
 
 
 def calendary():
@@ -51,3 +52,13 @@ def calculator():
 
     if operator == "/":
         return to_divide(number_1_float, number_2_float)
+
+
+def open_app(app_name, site_name):
+    pyautogui.PAUSE = 2
+    pyautogui.press("win")
+    pyautogui.write(app_name)
+    pyautogui.press("enter")
+    pyautogui.click(x=500, y=50)
+    pyautogui.write(site_name)
+    pyautogui.press("enter")
