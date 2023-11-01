@@ -1,9 +1,10 @@
 import response as rp
 
+
 while True:
     saucao_bot = print("Seja Bem-Vindo!\nSou Eduard! Seu assistente virtual.")
     greetings_user = input("Como posso te ajudar?\nR: ")
-    first_keyword = ["pesquisa", "calcular", "abrir", "documento"]
+    first_keyword = ["pesquisa", "calcular", "abrir", "documento", "cotaçao"]
 
     if greetings_user in first_keyword:
         if greetings_user == "pesquisa":
@@ -49,6 +50,18 @@ while True:
             if dock_type == "xlsx":
                 dock_name = input("Digite o documento que deseja abrir\nR: ")
                 rp.open_dock_xlsx(dock_name)
+        if greetings_user == "cotaçao":
+            type_coin = input("Dólar\nEuro\nBitcoin\nSelecione a moeda:")
+
+            if type_coin == "dólar":
+                rp.dollar_exchange_rate()
+
+            if type_coin == "euro":
+                rp.euro_value()
+
+            if type_coin == "bitcoin":
+                rp.bitcon_quote()
+
     continua = input("Posso te ajudar algo a mais?\nR: ")
     if continua.lower() == "Nao" or continua.lower() == "nao":
         break

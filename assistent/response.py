@@ -87,3 +87,36 @@ def open_dock_xlsx(dock_name):
     )
     print(open_xlsx.head)
     print(open_xlsx.shape)
+
+
+def dollar_exchange_rate():
+    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"
+    teste = requests.get(api)
+    moeda = teste.json()
+    moeda_dolar = moeda["USDBRL"]["bid"]
+    moeda_dolar_float = float(moeda_dolar)
+    moeda_arren = round(moeda_dolar_float, 2)
+
+    return print("Cotação do Dolar está $", moeda_arren)
+
+
+def euro_value():
+    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"
+    teste = requests.get(api)
+    moeda = teste.json()
+    moeda_dolar = moeda["EURBRL"]["bid"]
+    moeda_dolar_float = float(moeda_dolar)
+    moeda_arren = round(moeda_dolar_float, 2)
+
+    return print("Cotação do Euro está $", moeda_arren)
+
+
+def bitcon_quote():
+    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"
+    teste = requests.get(api)
+    moeda = teste.json()
+    moeda_dolar = moeda["BTCBRL"]["bid"]
+    moeda_dolar_float = float(moeda_dolar)
+    moeda_arren = round(moeda_dolar_float, 2)
+
+    return print("Cotação do Bitcoin está $", moeda_arren)
