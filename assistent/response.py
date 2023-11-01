@@ -1,6 +1,7 @@
 import datetime
 import requests
 import pyautogui
+import pandas as pd
 
 
 def calendary():
@@ -54,7 +55,7 @@ def calculator():
         return to_divide(number_1_float, number_2_float)
 
 
-def open_app(app_name, site_name):
+def open_app_and_browse(app_name, site_name):
     pyautogui.PAUSE = 2
     pyautogui.press("win")
     pyautogui.write(app_name)
@@ -62,3 +63,27 @@ def open_app(app_name, site_name):
     pyautogui.click(x=500, y=50)
     pyautogui.write(site_name)
     pyautogui.press("enter")
+
+
+def open_app(app_name):
+    pyautogui.PAUSE = 2
+    pyautogui.press("win")
+    pyautogui.write(app_name)
+    pyautogui.press("enter")
+
+
+def open_dock_txt(dock_name):
+    with open(
+        f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\back-end\\Arquivo_txt\\{dock_name}.txt",
+        "r",
+    ) as arquivo:
+        dados = arquivo.read()
+        return print(dados)
+
+
+def open_dock_xlsx(dock_name):
+    open_xlsx = pd.read_excel(
+        f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\{dock_name}.xlsx"
+    )
+    print(open_xlsx.head)
+    print(open_xlsx.shape)
