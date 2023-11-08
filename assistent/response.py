@@ -2,7 +2,7 @@ import datetime
 import requests
 import pyautogui
 import pandas as pd
-
+from googletrans import Translator as tl
 
 def calendary():
     HORA = datetime.datetime.now().strftime(
@@ -73,20 +73,25 @@ def open_app(app_name):
 
 
 def open_dock_txt(dock_name):
-    with open(
-        f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\back-end\\Arquivo_txt\\{dock_name}.txt",
-        "r",
-    ) as arquivo:
-        dados = arquivo.read()
-        return print(dados)
-
+    try:
+        with open(
+            f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\back-end\\Arquivo_txt\\{dock_name}.txt",
+            "r",
+        ) as arquivo:
+            dados = arquivo.read()
+            return print(dados)
+    except FileNotFoundError:
+        print("Perdão, não consegui localizar o documento")
 
 def open_dock_xlsx(dock_name):
-    open_xlsx = pd.read_excel(
-        f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\{dock_name}.xlsx"
-    )
-    print(open_xlsx.head)
-    print(open_xlsx.shape)
+    try:
+        open_xlsx = pd.read_excel(
+            f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\{dock_name}.xlsx"
+        )
+        print(open_xlsx.head)
+        print(open_xlsx.shape)
+    except FileNotFoundError:
+        print("Perdão, não consegui localizar o documento")
 
 
 def dollar_exchange_rate():
@@ -120,3 +125,19 @@ def bitcon_quote():
     moeda_arren = round(moeda_dolar_float, 2)
 
     return print("Cotação do Bitcoin está $", moeda_arren)
+
+def tradutor(text, language):
+    try:
+        # Create a translator instance
+        translator = tl()
+
+        language_distiny = language 
+    
+        # Perform the translation
+        traducao = translator.translate(text, dest=language_distiny)
+
+        # Display the translated text
+        print(f'Texto original ({traducao.src}): {text}')
+        print(f'Texto traduzido ({language_distiny}): {traducao.text}')
+    except ValueError:
+        print('Perdão, não consegui identificar a língua/letra desejada ')
