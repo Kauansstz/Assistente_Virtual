@@ -4,6 +4,7 @@ import pyautogui
 import pandas as pd
 from googletrans import Translator as tl
 
+
 def calendary():
     HORA = datetime.datetime.now().strftime(
         "Horas: %H:%M"
@@ -83,6 +84,7 @@ def open_dock_txt(dock_name):
     except FileNotFoundError:
         print("Perdão, não consegui localizar o documento")
 
+
 def open_dock_xlsx(dock_name):
     try:
         open_xlsx = pd.read_excel(
@@ -126,18 +128,19 @@ def bitcon_quote():
 
     return print("Cotação do Bitcoin está $", moeda_arren)
 
+
 def tradutor(text, language):
     try:
         # Create a translator instance
         translator = tl()
 
-        language_distiny = language 
-    
+        language_distiny = language
+
         # Perform the translation
         traducao = translator.translate(text, dest=language_distiny)
 
         # Display the translated text
-        print(f'Texto original ({traducao.src}): {text}')
-        print(f'Texto traduzido ({language_distiny}): {traducao.text}')
+        print(f"Texto original ({traducao.src}): {text}")  # type: ignore
+        print(f"Texto traduzido ({language_distiny}): {traducao.text}")  # type: ignore
     except ValueError:
-        print('Perdão, não consegui identificar a língua/letra desejada ')
+        print("Perdão, não consegui identificar a língua/letra desejada ")
