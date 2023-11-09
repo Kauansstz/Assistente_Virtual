@@ -8,21 +8,22 @@ from googletrans import Translator as tl
 def calendary():
     HORA = datetime.datetime.now().strftime(
         "Horas: %H:%M"
-    )  # Coletando as horas via console(Desktop/Mobile)
+    )  # Collecting hours via console (Desktop/Mobile)
     DIA = datetime.datetime.now().strftime(
         "Data: %D - Dia da Semana: %A"
-    )  # Coletando o dia, mes, ano e dia da semana via console(Desktop/Mobile)
-    return DIA, HORA  # Juntando tudo para mostrar ao usuário as informações coletadas
+    )  # Collecting the day, month, year and day of the week via console (Desktop/Mobile)
+    return DIA, HORA
 
 
 def climate_of_the_region():
-    api = "https://wttr.in/palhoça"  # Pegando uma api com clima, porcentagem de chuva nos 4 horarios(Manhã, começo/Fim da tarde e de Noite)
-    response = requests.get(api)  # Variavel recebendo o requests da api
-    CLIMA = response.text  # Convertendo a variavel acima em forma de texto
+    api = "https://wttr.in/palhoça"  # Getting an api with weather, percentage of rain at 4 times (Morning, beginning/Late afternoon and Night)
+    response = requests.get(api)
+    CLIMA = response.text
     return CLIMA
 
 
 def calculator():
+    # Inserted a calculator if possible the user wants to do an equation
     operator = input("Digite qualquer sinal de operação\nR: ")
 
     number_1 = input("Digite um número\nR: ")
@@ -57,6 +58,7 @@ def calculator():
 
 
 def open_app_and_browse(app_name, site_name):
+    # If the user wants to open an app and browse a website
     pyautogui.PAUSE = 2
     pyautogui.press("win")
     pyautogui.write(app_name)
@@ -67,6 +69,7 @@ def open_app_and_browse(app_name, site_name):
 
 
 def open_app(app_name):
+    # If the user wants to open an app
     pyautogui.PAUSE = 2
     pyautogui.press("win")
     pyautogui.write(app_name)
@@ -74,6 +77,7 @@ def open_app(app_name):
 
 
 def open_dock_txt(dock_name):
+    # If the user wants to open a specific document
     try:
         with open(
             f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\back-end\\Arquivo_txt\\{dock_name}.txt",
@@ -86,6 +90,7 @@ def open_dock_txt(dock_name):
 
 
 def open_dock_xlsx(dock_name):
+    # If the user wants to open a specific document
     try:
         open_xlsx = pd.read_excel(
             f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\{dock_name}.xlsx"
@@ -97,34 +102,46 @@ def open_dock_xlsx(dock_name):
 
 
 def dollar_exchange_rate():
-    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"
+    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"  # Dollar, euro and bitcoin API
     teste = requests.get(api)
     moeda = teste.json()
-    moeda_dolar = moeda["USDBRL"]["bid"]
-    moeda_dolar_float = float(moeda_dolar)
-    moeda_arren = round(moeda_dolar_float, 2)
+    moeda_dolar = moeda["USDBRL"][
+        "bid"
+    ]  # Collecting the currency type and collecting the quote
+    moeda_dolar_float = float(moeda_dolar)  # transforming the variable into float
+    moeda_arren = round(
+        moeda_dolar_float, 2
+    )  # Rounding the variable and leaving two decimal places after the decimal point
 
     return print("Cotação do Dolar está $", moeda_arren)
 
 
 def euro_value():
-    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"
+    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"  # Dollar, euro and bitcoin API
     teste = requests.get(api)
     moeda = teste.json()
-    moeda_dolar = moeda["EURBRL"]["bid"]
-    moeda_dolar_float = float(moeda_dolar)
-    moeda_arren = round(moeda_dolar_float, 2)
+    moeda_dolar = moeda["EURBRL"][
+        "bid"
+    ]  # Collecting the currency type and collecting the quote
+    moeda_dolar_float = float(moeda_dolar)  # transforming the variable into float
+    moeda_arren = round(
+        moeda_dolar_float, 2
+    )  # Rounding the variable and leaving two decimal places after the decimal point
 
     return print("Cotação do Euro está $", moeda_arren)
 
 
 def bitcon_quote():
-    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"
+    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"  # Dollar, euro and bitcoin API
     teste = requests.get(api)
     moeda = teste.json()
-    moeda_dolar = moeda["BTCBRL"]["bid"]
-    moeda_dolar_float = float(moeda_dolar)
-    moeda_arren = round(moeda_dolar_float, 2)
+    moeda_dolar = moeda["BTCBRL"][
+        "bid"
+    ]  # Collecting the currency type and collecting the quote
+    moeda_dolar_float = float(moeda_dolar)  # transforming the variable into float
+    moeda_arren = round(
+        moeda_dolar_float, 2
+    )  # Rounding the variable and leaving two decimal places after the decimal point
 
     return print("Cotação do Bitcoin está $", moeda_arren)
 
