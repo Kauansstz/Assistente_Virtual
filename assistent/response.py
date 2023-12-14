@@ -3,6 +3,7 @@ import requests
 import pyautogui
 import pandas as pd
 from googletrans import Translator as tl
+import subprocess
 
 
 def calendary():
@@ -59,21 +60,18 @@ def calculator():
 
 def open_app_and_browse(app_name, site_name):
     # If the user wants to open an app and browse a website
-    pyautogui.PAUSE = 2
-    pyautogui.press("win")
-    pyautogui.write(app_name)
-    pyautogui.press("enter")
+    nome_do_aplicativo = app_name
+    comando = f"start {nome_do_aplicativo}"
+    subprocess.run(comando, shell=True)
     pyautogui.click(x=500, y=50)
     pyautogui.write(site_name)
     pyautogui.press("enter")
 
 
 def open_app(app_name):
-    # If the user wants to open an app
-    pyautogui.PAUSE = 2
-    pyautogui.press("win")
-    pyautogui.write(app_name)
-    pyautogui.press("enter")
+    nome_do_aplicativo = app_name
+    comando = f"start {nome_do_aplicativo}"
+    subprocess.run(comando, shell=True)
 
 
 def open_dock_txt(dock_name):

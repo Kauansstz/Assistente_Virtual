@@ -91,5 +91,5 @@ while True:
             rp.tradutor(text, langue_lower)
 
     continua = input("Posso te ajudar algo a mais?\nR: ")
-    if continua.lower() == "Nao" or continua.lower() == "nao":
+    if continua.lower() == "Nao":
         break
