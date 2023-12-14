@@ -70,16 +70,8 @@ while True:
                 rp.open_dock_xlsx(dock_name)
 
         if greetings_user == "cotaçao":
-            type_coin = input("Dólar\nEuro\nBitcoin\nSelecione a moeda:")
-
-            if type_coin == "dólar":
-                rp.dollar_exchange_rate()
-
-            if type_coin == "euro":
-                rp.euro_value()
-
-            if type_coin == "bitcoin":
-                rp.bitcon_quote()
+            type_money = input("Dólar\nEuro\nBitcoin\nSelecione a moeda:")
+            rp.cote(type_money)
 
         if greetings_user == "tradutor":
             print(

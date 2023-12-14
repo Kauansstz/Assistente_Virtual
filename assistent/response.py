@@ -99,49 +99,28 @@ def open_dock_xlsx(dock_name):
         print("Perdão, não consegui localizar o documento")
 
 
-def dollar_exchange_rate():
+def cote(type_money):
     api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"  # Dollar, euro and bitcoin API
     teste = requests.get(api)
     moeda = teste.json()
-    moeda_dolar = moeda["USDBRL"][
-        "bid"
-    ]  # Collecting the currency type and collecting the quote
-    moeda_dolar_float = float(moeda_dolar)  # transforming the variable into float
-    moeda_arren = round(
-        moeda_dolar_float, 2
-    )  # Rounding the variable and leaving two decimal places after the decimal point
+    money = type_money
+    if money.lower() == "dolar":
+        money_dollar = moeda["USDBRL"]["bid"]
+        money_dollar_float = float(money_dollar)
+        money_round = round(money_dollar_float, 2)
+        return print("Cotação do Dolar está $", money_round)
 
-    return print("Cotação do Dolar está $", moeda_arren)
+    elif money.lower() == "euro":
+        money_euro = moeda["EURBRL"]["bid"]
+        money_euro_float = float(money_euro)
+        money_round = round(money_euro_float, 2)
+        return print("Cotação do Euro está $", money_round)
 
-
-def euro_value():
-    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"  # Dollar, euro and bitcoin API
-    teste = requests.get(api)
-    moeda = teste.json()
-    moeda_dolar = moeda["EURBRL"][
-        "bid"
-    ]  # Collecting the currency type and collecting the quote
-    moeda_dolar_float = float(moeda_dolar)  # transforming the variable into float
-    moeda_arren = round(
-        moeda_dolar_float, 2
-    )  # Rounding the variable and leaving two decimal places after the decimal point
-
-    return print("Cotação do Euro está $", moeda_arren)
-
-
-def bitcon_quote():
-    api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"  # Dollar, euro and bitcoin API
-    teste = requests.get(api)
-    moeda = teste.json()
-    moeda_dolar = moeda["BTCBRL"][
-        "bid"
-    ]  # Collecting the currency type and collecting the quote
-    moeda_dolar_float = float(moeda_dolar)  # transforming the variable into float
-    moeda_arren = round(
-        moeda_dolar_float, 2
-    )  # Rounding the variable and leaving two decimal places after the decimal point
-
-    return print("Cotação do Bitcoin está $", moeda_arren)
+    elif money.lower() == "bitcoin":
+        money_btn = moeda["BTCBRL"]["bid"]
+        money_btn_float = float(money_btn)
+        money_round = round(money_btn_float, 2)
+        return print("Cotação do Bitcoin está $", money_round)
 
 
 def tradutor(text, language):
