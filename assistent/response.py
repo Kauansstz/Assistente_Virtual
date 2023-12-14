@@ -33,29 +33,28 @@ def calculator():
     number_1_float = float(number_1)
     number_2_float = float(number_2)
 
-    def more(x, y):
-        return print(x + y)
-
-    def any_less(x, y):
-        return print(x - y)
-
-    def multiply(x, y):
-        return print(x * y)
-
-    def to_divide(x, y):
-        return print(x / y)
-
     if operator == "+":
-        return more(number_1_float, number_2_float)
+        more = lambda x, y: x + y
+        result = more(number_1_float, number_2_float)
+        print(result)
 
-    if operator == "-":
-        return any_less(number_1_float, number_2_float)
+    elif operator == "-":
+        any_less = lambda x, y: x - y
+        result = any_less(number_1_float, number_2_float)
+        print(result)
 
-    if operator == "*":
-        return multiply(number_1_float, number_2_float)
+    elif operator == "*":
+        multiply = lambda x, y: x * y
+        result = multiply(number_1_float, number_2_float)
+        print(result)
 
-    if operator == "/":
-        return to_divide(number_1_float, number_2_float)
+    elif operator == "/":
+        to_divide = lambda x, y: x / y
+        result = to_divide(number_1_float, number_2_float)
+        print(result)
+
+    else:
+        print("Sinal de operator não reconhecido")
 
 
 def open_app_and_browse(app_name, site_name):
