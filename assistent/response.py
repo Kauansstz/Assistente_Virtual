@@ -6,6 +6,26 @@ from googletrans import Translator as tl
 import subprocess
 
 
+def salution():
+    current_time = datetime.datetime.now().time()
+    formatted_time = current_time.strftime("%H:%M")
+
+    inicio_manha = datetime.datetime.strptime("06:00", "%H:%M").time()
+    final_manha = datetime.datetime.strptime("11:59", "%H:%M").time()
+
+    inicio_tarde = datetime.datetime.strptime("12:00", "%H:%M").time()
+    final_tarde = datetime.datetime.strptime("17:59", "%H:%M").time()
+
+    if inicio_manha <= current_time <= final_manha:
+        print("Bom dia")
+
+    elif inicio_tarde <= current_time <= final_tarde:
+        print("Boa Tarde")
+
+    else:
+        print("Boa Tarde")
+
+
 def calendary():
     HORA = datetime.datetime.now().strftime(
         "Horas: %H:%M"
