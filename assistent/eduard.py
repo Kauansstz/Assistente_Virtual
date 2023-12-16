@@ -1,9 +1,8 @@
 import response as rp
 
 
-greetings_bot = print(
-    "Seja Bem-Vindo!\nSou Eduard! Seu assistente virtual."
-)  # Virtual Assistant starting a conversation
+rp.salution()
+
 first_keyword = [
     "pesquisa",
     "calcular",

@@ -17,13 +17,13 @@ def salution():
     final_tarde = datetime.datetime.strptime("17:59", "%H:%M").time()
 
     if inicio_manha <= current_time <= final_manha:
-        print("Bom dia")
+        print("Bom dia!\nSeja Bem-Vindo!\nSou Eduard! Seu assistente virtual.")
 
     elif inicio_tarde <= current_time <= final_tarde:
-        print("Boa Tarde")
+        print("Boa Tarde!\nSeja Bem-Vindo!\nSou Eduard! Seu assistente virtual.")
 
     else:
-        print("Boa Tarde")
+        print("Boa Noite!\nSeja Bem-Vindo!\nSou Eduard! Seu assistente virtual.")
 
 
 def calendary():
