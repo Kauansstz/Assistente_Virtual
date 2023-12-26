@@ -4,36 +4,30 @@ import response as rp
 rp.salution()
 
 first_keyword = [
-    "pesquisa",
+    "calendario",
+    "clima",
     "calcular",
     "abrir",
     "documento",
     "cotaçao",
     "tradutor",
+    "esta",
+    "sair",
 ]  # list of items that will be used during the conversation
 
 # debug loop in case the user has more questions
 while True:
-    greetings_user = input(
-        "Como posso te ajudar?\nR: "
-    )  # input for the user to enter what they want to insert
+    greetings_user = input("")  # input for the user to enter what they want to insert
+
     if (
         greetings_user in first_keyword
     ):  # checking what the user type contains in the list above
-        if greetings_user == "pesquisa":
-            response = input("Digite o que deseja Pesquisar\nR: ")
-            second_keyword = ["calendario", "clima"]
+        if greetings_user == "calendario":
+            for i in rp.calendary():
+                print(i)
 
-            if response in second_keyword:
-                if response == "calendario":
-                    for i in rp.calendary():
-                        if response in second_keyword:
-                            print(i)
-
-                elif response == "clima":
-                    print(rp.climate_of_the_region())
-            else:
-                print("Desculpe! Não consegui identificar o que disse")
+        elif greetings_user == "clima":
+            print(rp.climate_of_the_region())
 
         if greetings_user == "calcular":
             rp.calculator()
@@ -81,6 +75,9 @@ while True:
             text = input("Traduzir\nR: ")
             rp.tradutor(text, langue_lower)
 
-    continua = input("Posso te ajudar algo a mais?\nR: ")
-    if continua.lower() == "Nao":
+        if greetings_user == "esta":
+            print("Eu estou bem!")
+    else:
+        print("Desculpe! Não consegui identificar o que disse")
+    if greetings_user.lower() == "sair":
         break
