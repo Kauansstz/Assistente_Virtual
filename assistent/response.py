@@ -118,7 +118,8 @@ def open_dock_xlsx(dock_name):
         open_xlsx = pd.read_excel(
             f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\{dock_name}.xlsx"
         )
-        print(open_xlsx.head)
+        opened_xlsx = pd.DataFrame(open_xlsx)
+        print(opened_xlsx)
         print(open_xlsx.shape)
     except FileNotFoundError:
         print("Perdão, não consegui localizar o documento")
