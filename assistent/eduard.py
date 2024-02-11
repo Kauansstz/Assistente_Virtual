@@ -1,8 +1,10 @@
 import response as rp
 import os
+from dicionario.quote import sla
+
 
 rp.salution()
-
+quoter = sla["esta"]
 first_keyword = [
     "calendario",
     "clima",
@@ -17,6 +19,7 @@ first_keyword = [
 
 # debug loop in case the user has more questions
 while True:
+
     greetings_user = input(
         "R: "
     )  # input for the user to enter what they want to insert
@@ -69,7 +72,7 @@ while True:
                 dock_name = input("Digite o documento que deseja abrir\nR: ")
                 rp.open_dock_xlsx(dock_name)
 
-        if greetings_user == "cotaçao":
+        if greetings_user in quoter:
             os.system("cls")
             type_money = input("Dólar\nEuro\nBitcoin\nSelecione a moeda:")
             rp.cote(type_money)
