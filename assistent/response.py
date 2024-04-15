@@ -4,6 +4,7 @@ import pyautogui
 import pandas as pd
 from googletrans import Translator as tl
 import subprocess
+from time import sleep
 
 
 def salution():
@@ -17,22 +18,25 @@ def salution():
     final_tarde = datetime.datetime.strptime("17:59", "%H:%M").time()
 
     if inicio_manha <= current_time <= final_manha:
-        print(
-            "Bom dia!\nSeja Bem-Vindo!\nSou Eduard! Seu assistente virtual.\nComo posso te ajudar?"
-        )
-
+        sleep(1)
+        print("Bom dia!\nSeja Bem-Vindo!")
+        sleep(2)
+        print("Sou Eduard! Seu assistente virtual.\nComo posso te ajudar?")
     elif inicio_tarde <= current_time <= final_tarde:
-        print(
-            "Boa Tarde!\nSeja Bem-Vindo!\nSou Eduard! Seu assistente virtual.\nComo posso te ajudar?"
-        )
+        sleep(1)
+        print("Boa Tarde!\nSeja Bem-Vindo!")
+        sleep(2)
+        print("Sou Eduard! Seu assistente virtual.\nComo posso te ajudar?")
 
     else:
-        print(
-            "Boa Noite!\nSeja Bem-Vindo!\nSou Eduard! Seu assistente virtual.\nComo posso te ajudar?"
-        )
+        sleep(1)
+        print("Boa Noite!\nSeja Bem-Vindo!")
+        sleep(2)
+        print("Sou Eduard! Seu assistente virtual.\nComo posso te ajudar?")
 
 
 def calendary():
+    sleep(1)
     HORA = datetime.datetime.now().strftime(
         "Horas: %H:%M"
     )  # Collecting hours via console (Desktop/Mobile)
@@ -43,6 +47,7 @@ def calendary():
 
 
 def climate_of_the_region():
+    sleep(1)
     api = "https://wttr.in/palhoça"  # Getting an api with weather, percentage of rain at 4 times (Morning, beginning/Late afternoon and Night)
     response = requests.get(api)
     CLIMA = response.text
@@ -50,6 +55,7 @@ def climate_of_the_region():
 
 
 def calculator():
+    sleep(1)
     # Inserted a calculator if possible the user wants to do an equation
     operator = input("Digite qualquer sinal de operação\nR: ")
 
@@ -60,31 +66,37 @@ def calculator():
     number_2_float = float(number_2)
 
     if operator == "+":
+        sleep(1)
         more = lambda x, y: x + y
         result = more(number_1_float, number_2_float)
         print(result)
 
     elif operator == "-":
+        sleep(1)
         any_less = lambda x, y: x - y
         result = any_less(number_1_float, number_2_float)
         print(result)
 
     elif operator == "*":
+        sleep(1)
         multiply = lambda x, y: x * y
         result = multiply(number_1_float, number_2_float)
         print(result)
 
     elif operator == "/":
+        sleep(1)
         to_divide = lambda x, y: x / y
         result = to_divide(number_1_float, number_2_float)
         print(result)
 
     else:
+        sleep(1)
         print("Sinal de operator não reconhecido")
 
 
 def open_app_and_browse(app_name, site_name):
     # If the user wants to open an app and browse a website
+    sleep(1)
     nome_do_aplicativo = app_name
     comando = f"start {nome_do_aplicativo}"
     subprocess.run(comando, shell=True)
@@ -94,12 +106,14 @@ def open_app_and_browse(app_name, site_name):
 
 
 def open_app(app_name):
+    sleep(1)
     nome_do_aplicativo = app_name
     comando = f"start {nome_do_aplicativo}"
     subprocess.run(comando, shell=True)
 
 
 def open_dock_txt(dock_name):
+    sleep(1)
     # If the user wants to open a specific document
     try:
         with open(
@@ -109,11 +123,13 @@ def open_dock_txt(dock_name):
             dados = arquivo.read()
             return print(dados)
     except FileNotFoundError:
+        sleep(1)
         print("Perdão, não consegui localizar o documento")
 
 
 def open_dock_xlsx(dock_name):
     # If the user wants to open a specific document
+    sleep(1)
     try:
         open_xlsx = pd.read_excel(
             f"C:\\Users\\Kauan\\OneDrive\\Área de Trabalho\\{dock_name}.xlsx"
@@ -122,27 +138,32 @@ def open_dock_xlsx(dock_name):
         print(opened_xlsx)
         print(open_xlsx.shape)
     except FileNotFoundError:
+        sleep(1)
         print("Perdão, não consegui localizar o documento")
 
 
 def cote(type_money):
+    sleep(1)
     api = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"  # Dollar, euro and bitcoin API
     teste = requests.get(api)
     moeda = teste.json()
     money = type_money
     if money.lower() == "dolar":
+        sleep(1)
         money_dollar = moeda["USDBRL"]["bid"]
         money_dollar_float = float(money_dollar)
         money_round = round(money_dollar_float, 2)
         return print("Cotação do Dolar está $", money_round)
 
     elif money.lower() == "euro":
+        sleep(1)
         money_euro = moeda["EURBRL"]["bid"]
         money_euro_float = float(money_euro)
         money_round = round(money_euro_float, 2)
         return print("Cotação do Euro está $", money_round)
 
     elif money.lower() == "bitcoin":
+        sleep(1)
         money_btn = moeda["BTCBRL"]["bid"]
         money_btn_float = float(money_btn)
         money_round = round(money_btn_float, 2)
@@ -150,6 +171,7 @@ def cote(type_money):
 
 
 def tradutor(text, language):
+    sleep(1)
     try:
         # Create a translator instance
         translator = tl()
@@ -163,4 +185,5 @@ def tradutor(text, language):
         print(f"Texto original ({traducao.src}): {text}")  # type: ignore
         print(f"Texto traduzido ({language_distiny}): {traducao.text}")  # type: ignore
     except ValueError:
+        sleep(1)
         print("Perdão, não consegui identificar a língua/letra desejada ")
