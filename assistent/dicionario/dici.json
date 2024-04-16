@@ -1,11 +1,13 @@
 {
-    "calendario":["calendario"],
-    "cotacao":["cotacao", "cotaçao", "cotação", "Cotacao", "Cotaçao", "Cotação"],
-    "clima":["clima", "Clima"],
-    "calcular":["calculo", "calcular", "calcula"],
-    "open": [ "abrir", "abri"],
-    "dock":["documento", "documentos", "doc.", "dock", "doc"],
-    "tradutor":["tradutor", "traduzir", "tradução", "traduto"],
-    "esta":["estar","esta"],
-    "sair":["sair"]
+    "dic": {
+    "calendario":["calendario", "quero visualizar o calendario", "gostaria de ver o calendario", "gostaria de visualizar o calendario"],
+    "cotacao":["cotacao", "quero saber da cotacao mundial", "quero saber a cotacao", "quero ver a cotacao"," quero visualizar a cotacao"],
+    "clima":["clima", "quero saber sobre o clima", "quero ver o clima", "clima de hoje", "clima da semana"],
+    "calcular":["calculo", "calcular", "calcula", "quero calcular", "quero fazer um calculo", "quero calcular"],
+    "open": [ "abrir", "abri", "quero abrir um documento", "quero abri um documento", "quero abrir algo", "quero abri algo"],
+    "dock":["documento", "documentos", "doc.", "dock", "doc", "acessar um documento", "abrir um documento"],
+    "tradutor":["tradutor", "traduzir", "tradução", "traduto", "quero realizar uma tradução", "abrir modo tradutor"],
+    "esta":["estar","esta", "como voce está?", "como voce vai?", "como vc está?", "como vc vai?"],
+    "sair":["sair", "quero sair", "fechar", "fecha", "fechar assistente", "fecha assistente"]
+    }
 }
