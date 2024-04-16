@@ -1,4 +1,11 @@
 {
-    "calendario":["calendario", "Calendario"],
-    "cotacao":["cotacao", "cotaçao", "cotação", "Cotacao", "Cotaçao", "Cotação"]
+    "calendario":["calendario"],
+    "cotacao":["cotacao", "cotaçao", "cotação", "Cotacao", "Cotaçao", "Cotação"],
+    "clima":["clima", "Clima"],
+    "calcular":["calculo", "calcular", "calcula"],
+    "open": [ "abrir", "abri"],
+    "dock":["documento", "documentos", "doc.", "dock", "doc"],
+    "tradutor":["tradutor", "traduzir", "tradução", "traduto"],
+    "esta":["estar","esta"],
+    "sair":["sair"]
 }

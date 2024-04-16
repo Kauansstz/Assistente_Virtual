@@ -18,19 +18,22 @@ def salution():
     final_tarde = datetime.datetime.strptime("17:59", "%H:%M").time()
 
     if inicio_manha <= current_time <= final_manha:
-        sleep(1)
-        print("Bom dia!\nSeja Bem-Vindo!")
+        print("Bom dia!")
+        sleep(2)
+        print("Seja Bem-Vindo!")
         sleep(2)
         print("Sou Eduard! Seu assistente virtual.\nComo posso te ajudar?")
     elif inicio_tarde <= current_time <= final_tarde:
-        sleep(1)
-        print("Boa Tarde!\nSeja Bem-Vindo!")
+        print("Boa Tarde!")
+        sleep(2)
+        print("Seja Bem-Vindo!")
         sleep(2)
         print("Sou Eduard! Seu assistente virtual.\nComo posso te ajudar?")
 
     else:
-        sleep(1)
-        print("Boa Noite!\nSeja Bem-Vindo!")
+        print("Boa Noite!")
+        sleep(2)
+        print("Seja Bem-Vindo!")
         sleep(2)
         print("Sou Eduard! Seu assistente virtual.\nComo posso te ajudar?")
 
