@@ -4,103 +4,123 @@ import json
 from time import sleep
 
 
-# open the JSON file
-with open("project_aurora/dicionario/dici.json") as arquivo:
+# Limpar a tela de forma portátil
+def clear_screen():
+    if os.name == "nt":  # Para Windows
+        os.system("cls")
+    else:  # Para Mac e Linux
+        os.system("clear")
+
+
+# Abrir o arquivo JSON
+with open("project_aurora/aurora/dicionario/dici.json") as arquivo:
     base = json.load(arquivo)
 
 rp.salution()
 
-# debug loop in case the user has more questions
+# Loop para tratar perguntas do usuário
 while True:
-    greetings_user = input(
-        "R: "
-    )  # input for the user to enter what they want to insert
-    if greetings_user in base["dic"]:
+    greetings_user = (
+        input("R: ").lower().strip()
+    )  # Converte a entrada para minúsculas e remove espaços extras
 
-        # if greetings_user in base:  # checking what the user type contains in the list above
-        if greetings_user.lower() in base["dic"]["calendario"]:
-            sleep(1)
-            os.system("cls")
-            for i in rp.calendary():
-                print(i)
+    found = False  # Flag para verificar se a entrada foi encontrada em alguma lista
 
-        elif greetings_user.lower() in base["dic"]["clima"]:
-            sleep(1)
-            os.system("cls")
-            print(rp.climate_of_the_region())
+    for key, phrases in base["dic"].items():
+        if greetings_user in phrases:
+            found = True
 
-        if greetings_user.lower() in base["dic"]["calcular"]:
-            sleep(1)
-            os.system("cls")
-            rp.calculator()
-
-        if greetings_user.lower() in base["dic"]["open"]:
-            sleep(1)
-            os.system("cls")
-            open = input("Deseja navegar em algum site?\nR: ")
-
-            if open == "sim" or open == "Sim":
+            if key == "calendario":
                 sleep(1)
-                app_name = input("Digite o nome do aplicativo que deseja abrir\nR: ")
-                site_name = input(
-                    "Digite o nome do site que deseja abrir(Para melhora a sua expêriencia, indico que coloque o nome do site 100% preciso)\nR: "
+                clear_screen()
+                for i in rp.calendary():
+                    print(i)
+
+            elif key == "about":
+                rp.about()
+
+            elif key == "clima":
+                sleep(1)
+                clear_screen()
+                print(rp.climate_of_the_region())
+
+            elif key == "calcular":
+                sleep(1)
+                clear_screen()
+                rp.calculator()
+
+            elif key == "open":
+                sleep(1)
+                clear_screen()
+                navigate = input("Deseja navegar em algum site?\nR: ").lower().strip()
+
+                if navigate == "sim":
+                    sleep(1)
+                    app_name = input(
+                        "Digite o nome do aplicativo que deseja abrir\nR: "
+                    ).strip()
+                    site_name = input(
+                        "Digite o nome do site que deseja abrir (Para melhorar sua experiência, coloque o nome do site 100% preciso)\nR: "
+                    ).strip()
+                    rp.open_app_and_browse(app_name, site_name)
+                else:
+                    sleep(1)
+                    app_name = input(
+                        "Digite o nome do aplicativo que deseja abrir\nR: "
+                    ).strip()
+                    rp.open_app(app_name)
+
+            elif key == "dock":
+                sleep(1)
+                clear_screen()
+                print(
+                    "Indicamos que agrupe em uma única pasta no dispositivo e coloque nomes simples nos documentos "
+                    "para facilitar a localização do documento."
                 )
-                rp.open_app_and_browse(app_name, site_name)
-
-            else:
+                dock_type = (
+                    input("Qual a formatação do documento?\nR: ").lower().strip()
+                )
                 sleep(1)
-                app_name = input("Digite o nome do aplicativo que deseja abrir\nR: ")
-                rp.open_app(app_name)
+                dock_formatting = ["txt", "xlsx", "pdf", "docx"]
+                if dock_type in dock_formatting:
+                    dock_name = input(
+                        "Digite o nome do documento que deseja abrir\nR: "
+                    ).strip()
+                    if dock_type == "txt":
+                        rp.open_dock_txt(dock_name)
+                    elif dock_type == "xlsx":
+                        rp.open_dock_xlsx(dock_name)
+                    # Adicione mais verificações se necessário
 
-        if greetings_user.lower() in base["dic"]["dock"]:
-            sleep(1)
-            os.system("cls")
-            print(
-                "Indicamos que agrupe em uma única pasta no dispositivo e coloque nomes simples nos documentos"
-                "Para facilitar a localização do documento."
-            )
-            dock_type = input("Qual a formatação do documento?\nR: ")
-            sleep(1)
-            dock_formatting = ["txt", "xlsx", "pdf", "docx"]
-            if dock_type in dock_formatting:
-                if dock_type == "txt":
-                    dock_name = input("Digite o documento que deseja abrir\nR: ")
-                    rp.open_dock_txt(dock_name)
-
-            if dock_type == "xlsx":
+            elif key == "cotacao":
                 sleep(1)
-                dock_name = input("Digite o documento que deseja abrir\nR: ")
-                rp.open_dock_xlsx(dock_name)
+                clear_screen()
+                print("Temos disponíveis:")
+                sleep(1)
+                print("Dólar;")
+                sleep(1)
+                print("Euro;")
+                sleep(1)
+                print("Bitcoin")
+                sleep(1)
+                type_money = input("Selecione a moeda desejada:\nR: ").lower().strip()
+                rp.cote(type_money)
 
-        if greetings_user.lower() in base["dic"]["cotacao"]:
-            sleep(1)
-            os.system("cls")
-            print("Temos disponiveis:")
-            sleep(1)
-            print("Dólar;")
-            sleep(1)
-            print("Euro;")
-            sleep(1)
-            print("Bitcoin")
-            sleep(1)
-            type_money = input("Selecione a moeda desejada:")
-            rp.cote(type_money)
+            elif key == "esta":
+                sleep(1)
+                clear_screen()
+                print("Eu estou bem!")
 
-        if greetings_user.lower() in base["dic"]["esta"]:
-            sleep(1)
-            os.system("cls")
-            print("Eu estou bem!")
-        if greetings_user.lower() in base["dic"]["about"]:
-            rp.about()
+            elif key == "sair":
+                sleep(1)
+                print("\033[91m--A sessão foi Finalizada--\033[0m")
+                exit()
 
-        if greetings_user.lower() in base["dic"]["sair"]:
-            sleep(1)
-            print("\033[91m--A sessão foi Finalziada--\033[0m")
-            break
-    else:
+    if not found:
         sleep(1)
         print("Desculpe! Não consegui identificar o que disse")
+
     sleep(1)
     print(
-        "\033[93mPara continuar a sessão, só digitar o que deseja...\nCaso deseja sair, digite 'Sair'\033[0m"
+        "\033[93mPara continuar a sessão, digite o que deseja...\nCaso deseje sair, digite 'sair'\033[0m"
     )
