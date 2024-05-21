@@ -168,7 +168,7 @@ def cote(type_money):
 
 def about():
     sleep(1)
-    print(
+    return print(
         "Em 2022, nasceu Aurora, uma assistente pessoal revolucionária criada por Kauan dos Santos de Souza aos seus jovens 19 anos.\
             Sua jornada para criar Aurora começou quando ele estava trabalhando como helpdesk, lidando com uma variedade de consultas e problemas dos usuários. \
             Foi durante esse tempo que Kauan percebeu uma necessidade crucial: um assistente que pudesse compreender profundamente os seres humanos e suas necessidades.\n"

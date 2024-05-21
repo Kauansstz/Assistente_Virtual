@@ -3,6 +3,7 @@ import os
 import json
 from time import sleep
 
+
 # open the JSON file
 with open("project_aurora/dicionario/dici.json") as arquivo:
     base = json.load(arquivo)
