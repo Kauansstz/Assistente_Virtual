@@ -1,4 +1,3 @@
-from model import About
 import datetime
 import requests
 import pyautogui
@@ -178,4 +177,3 @@ def about():
         "Assim nasceu Aurora. Inspirada pela luz do amanhecer, ela representa um novo começo, oferecendo um raio de esperança e assistência em meio às complexidades da vida cotidiana.\n"
         "Equipada com habilidades avançadas de compreensão de linguagem natural e uma compreensão profunda das necessidades humanas, Aurora está pronta para oferecer suporte, orientação e companhia a todos que precisam dela."
     )
-
