@@ -1,7 +1,7 @@
-import json
-from project_aurora.aurora import response as rp
+from project_aurora.aurora.model import About
 
-with open("project_aurora/aurora/dicionario/dici.json") as arquivo:
-    base = json.load(arquivo)
+response = input()
 
-rp.about()
+
+teste1 = About.about_boss("Kauan", "kauan", "20")
+print(About)
