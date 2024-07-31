@@ -2,6 +2,7 @@ import response as rp
 import os
 import json
 from time import sleep
+from information.data import Pessoa, adicionar_pessoa, exibir_dados
 
 
 # Limpar a tela de forma portátil
@@ -119,6 +120,16 @@ while True:
                     sleep(1)
                     print("\033[91m--A sessão foi Finalizada--\033[0m")
                     exit()
+
+                case "cadastro":
+                    nome = input("Digite seu nome completo: ")
+                    idade = int(input("Digite sua idade: "))
+                    email = input("Digite seu email: ")
+                    pessoa = Pessoa(nome, idade, email)
+                    adicionar_pessoa(pessoa)
+
+                case "dados":
+                    exibir_dados()
     if not found:
         sleep(1)
         print("Desculpe! Não consegui identificar o que disse")
