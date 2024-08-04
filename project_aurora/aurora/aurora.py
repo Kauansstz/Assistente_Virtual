@@ -2,7 +2,12 @@ import response as rp
 import os
 import json
 from time import sleep
-from information.data import Pessoa, adicionar_pessoa, exibir_dados
+from information.cadastro_pessoa import (
+    Pessoa,
+    adicionar_pessoa,
+    exibir_dados,
+)
+from information.calculadora import Calculadora
 
 
 # Limpar a tela de forma portátil
@@ -48,7 +53,105 @@ while True:
                 case "calcular":
                     sleep(1)
                     clear_screen()
-                    rp.calculator()
+                    response = input(
+                        "Digite uma das opções que deseja:\n[1] Soma;\n[2] Subtação;\n[3] Divisão;\n[4] Multiplicação;\n[5] Equação do Segundo Grau.\nR: "
+                    )
+                    match response:
+                        case "1":
+                            response = input("Quantos números tem a conta?\nR: ")
+                            match response:
+                                case "4":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = input("Digite o 3º número: ")
+                                    number_4 = input("Digite o 4º número: ")
+                                case "3":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = input("Digite o 3º número: ")
+                                case "2":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                case _:
+                                    print(
+                                        "Por enquanto temos uma equação de somente com 4 números"
+                                    )
+                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            print(calc.somar())
+                        case "2":
+                            response = input("Quantos números tem a conta?\nR: ")
+                            match response:
+                                case "4":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = input("Digite o 3º número: ")
+                                    number_4 = input("Digite o 4º número: ")
+                                case "3":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = input("Digite o 3º número: ")
+                                    number_4 = None
+                                case "2":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = None
+                                    number_4 = None
+                                case _:
+                                    print(
+                                        "Por enquanto temos uma equação de somente com 4 números"
+                                    )
+                        case "3":
+                            response = input("Quantos números tem a conta?\nR: ")
+                            match response:
+                                case "4":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = input("Digite o 3º número: ")
+                                    number_4 = input("Digite o 4º número: ")
+                                case "3":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = input("Digite o 3º número: ")
+                                    number_4 = None
+                                case "2":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = None
+                                    number_4 = None
+                                case _:
+                                    print(
+                                        "Por enquanto temos uma equação de somente com 4 números"
+                                    )
+                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            print(calc.divisao())
+                        case "4":
+                            response = input("Quantos números tem a conta?\nR: ")
+                            match response:
+                                case "4":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = input("Digite o 3º número: ")
+                                    number_4 = input("Digite o 4º número: ")
+                                case "3":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = input("Digite o 3º número: ")
+                                    number_4 = None
+                                case "2":
+                                    number_1 = input("Digite o 1º número: ")
+                                    number_2 = input("Digite o 2º número:")
+                                    number_3 = None
+                                    number_4 = None
+                                case _:
+                                    print(
+                                        "Por enquanto temos uma equação de somente com 4 números"
+                                    )
+                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            print(calc.multiplicar())
+                        case _:
+                            print(
+                                "Temos somente operações de somar, substração, multiplicação e divisão, em breve adicionaremos mais equações"
+                            )
 
                 case "open":
                     sleep(1)
