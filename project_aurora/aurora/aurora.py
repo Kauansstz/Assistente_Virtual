@@ -1,15 +1,18 @@
-import response as rp
 import os
 import json
 from time import sleep
-from information.cadastro_pessoa import (
+from importacao import (
     Pessoa,
+    Money,
+    Calculadora,
+    Calendary,
+    About,
+    Solution,
+    Climate,
+    OpenDock,
     adicionar_pessoa,
     exibir_dados,
 )
-from information.calculadora import Calculadora
-from information.solution import Solution
-from information.calendary import Calendary
 
 
 # Limpar a tela de forma portátil
@@ -48,12 +51,14 @@ while True:
                         print(i)
 
                 case "about":
-                    rp.about()
+                    response = About()
+                    response.about()
 
                 case "clima":
                     sleep(1)
                     clear_screen()
-                    print(rp.climate_of_the_region())
+                    response = Climate()
+                    response.climate_of_the_region()
 
                 case "calcular":
                     sleep(1)
@@ -183,13 +188,15 @@ while True:
                         site_name = input(
                             "Digite o nome do site que deseja abrir (Para melhorar sua experiência, coloque o nome do site 100% preciso)\nR: "
                         ).strip()
-                        rp.open_app_and_browse(app_name, site_name)
+                        response = OpenDock()
+                        response.open_app_and_browse(app_name, site_name)
                     else:
                         sleep(1)
                         app_name = input(
                             "Digite o nome do aplicativo que deseja abrir\nR: "
                         ).strip()
-                        rp.open_app(app_name)
+                        response = OpenDock()
+                        response.open_app(app_name)
 
                 case "dock":
                     sleep(1)
@@ -208,26 +215,27 @@ while True:
                             "Digite o nome do documento que deseja abrir\nR: "
                         ).strip()
                         if dock_type == "txt":
-                            rp.open_dock_txt(dock_name)
+                            response = OpenDock()
+                            response.open_dock_txt(dock_name)
                         elif dock_type == "xlsx":
-                            rp.open_dock_xlsx(dock_name)
+                            response = OpenDock()
+                            response.open_dock_xlsx(dock_name)
                         # Adicione mais verificações se necessário
 
                 case "cotacao":
                     sleep(1)
                     clear_screen()
-                    print("Temos disponíveis:")
+                    print("Selecione uam das opções:")
                     sleep(1)
-                    print("Dólar;")
+                    print("[1] Dólar;")
                     sleep(1)
-                    print("Euro;")
+                    print("[2] Euro;")
                     sleep(1)
-                    print("Bitcoin")
+                    print("[3] Bitcoin")
                     sleep(1)
-                    type_money = (
-                        input("Selecione a moeda desejada:\nR: ").lower().strip()
-                    )
-                    rp.cote(type_money)
+                    type_money = input("R: ").lower().strip()
+                    response = Money()
+                    response.cote(type_money)
 
                 case "esta":
                     sleep(1)

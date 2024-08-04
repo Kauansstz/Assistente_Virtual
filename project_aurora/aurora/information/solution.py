@@ -27,7 +27,7 @@ class Solution:
 
         print(response)
         print("Sou Aurora!")
-        sleep(2)
+        sleep(1)
         print("Sua Assistente Pessoal.")
-        sleep(2)
+        sleep(1)
         print("Como posso te ajudar?")
