@@ -10,6 +10,7 @@ from importacao import (
     Solution,
     Climate,
     OpenDock,
+    Tradulator,
     adicionar_pessoa,
     exibir_dados,
 )
@@ -256,6 +257,10 @@ while True:
 
                 case "dados":
                     exibir_dados()
+
+                case "traduzir":
+                    response = Tradulator()
+                    response.tradulator()
     if not found:
         sleep(1)
         print("Desculpe! Não consegui identificar o que disse")

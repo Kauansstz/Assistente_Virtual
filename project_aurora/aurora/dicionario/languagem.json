@@ -1,0 +1,15 @@
+{
+    "ingles":{
+        "elevador": "Elevator",
+        "living Room": "Sala de Estar",
+        "kitchen": "Cozinha",
+        "bedroom": "Quarto",
+        "garden": "Jardim",
+        "bathroom": "Banheiro",
+        "room": "Quarto",
+        "door": "Porta",
+        "window": "Janela",
+        "happy": "Feliz",
+        "book": "Livro"
+    }
+}

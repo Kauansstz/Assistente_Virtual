@@ -10,3 +10,4 @@ from information.sobre import About
 from information.money import Money
 from information.climate import Climate
 from information.open_dock import OpenDock
+from information.tradulator import Tradulator
