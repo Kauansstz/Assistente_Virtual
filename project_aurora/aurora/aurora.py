@@ -8,6 +8,8 @@ from information.cadastro_pessoa import (
     exibir_dados,
 )
 from information.calculadora import Calculadora
+from information.solution import Solution
+from information.calendary import Calendary
 
 
 # Limpar a tela de forma portátil
@@ -22,7 +24,9 @@ def clear_screen():
 with open("project_aurora/aurora/dicionario/dici.json") as arquivo:
     base = json.load(arquivo)
 
-rp.salution()
+day = Solution()
+day.solution()
+
 
 # Loop para tratar perguntas do usuário
 while True:
@@ -39,7 +43,8 @@ while True:
                 case "calendario":
                     sleep(1)
                     clear_screen()
-                    for i in rp.calendary():
+                    response = Calendary()
+                    for i in response.calendary():
                         print(i)
 
                 case "about":

@@ -6,88 +6,12 @@ import subprocess
 from time import sleep
 
 
-def salution():
-    current_time = datetime.datetime.now().time()
-    formatted_time = current_time.strftime("%H:%M")
-
-    inicio_manha = datetime.datetime.strptime("06:00", "%H:%M").time()
-    final_manha = datetime.datetime.strptime("11:59", "%H:%M").time()
-
-    inicio_tarde = datetime.datetime.strptime("12:00", "%H:%M").time()
-    final_tarde = datetime.datetime.strptime("17:59", "%H:%M").time()
-
-    if inicio_manha <= current_time <= final_manha:
-        print("Bom dia!")
-        sleep(2)
-        print("Sou Aurora!\nSua Assistente Pessoal.\nComo posso te ajudar?")
-    elif inicio_tarde <= current_time <= final_tarde:
-        print("Boa Tarde!")
-        sleep(2)
-        print("Sou Aurora!\nSua Assistente Pessoal.\nComo posso te ajudar?")
-
-    else:
-        print("Boa Noite!")
-        sleep(2)
-        print("Sou Aurora!\nSua Assistente Pessoal.\nComo posso te ajudar?")
-
-
-def calendary():
-    sleep(1)
-    HORA = datetime.datetime.now().strftime(
-        "Horas: %H:%M"
-    )  # Collecting hours via console (Desktop/Mobile)
-    DIA = datetime.datetime.now().strftime(
-        "Data: %D - Dia da Semana: %A"
-    )  # Collecting the day, month, year and day of the week via console (Desktop/Mobile)
-    return DIA, HORA
-
-
 def climate_of_the_region():
     sleep(1)
     api = "https://wttr.in/palhoça"  # Getting an api with weather, percentage of rain at 4 times (Morning, beginning/Late afternoon and Night)
     response = requests.get(api)
     CLIMA = response.text
     return CLIMA
-
-
-def calculator():
-    sleep(1)
-    # Inserted a calculator if possible the user wants to do an equation
-    operator = input("Digite qualquer sinal de operação\nR: ")
-
-    number_1 = input("Digite um número\nR: ")
-    number_2 = input("Digite um número\nR: ")
-
-    number_1_float = float(number_1)
-    number_2_float = float(number_2)
-
-    if operator == "+":
-        sleep(1)
-        more = lambda x, y: x + y
-        result = more(number_1_float, number_2_float)
-        print(result)
-
-    elif operator == "-":
-        sleep(1)
-        any_less = lambda x, y: x - y
-        result = any_less(number_1_float, number_2_float)
-        print(result)
-
-    elif operator == "*":
-        sleep(1)
-        multiply = lambda x, y: x * y
-        result = multiply(number_1_float, number_2_float)
-        print(result)
-
-    elif operator == "/":
-        sleep(1)
-        to_divide = lambda x, y: x / y
-        result = to_divide(number_1_float, number_2_float)
-        print(result)
-
-    else:
-        sleep(1)
-        print("Sinal de operator não reconhecido")
 
 
 def open_app_and_browse(app_name, site_name):
