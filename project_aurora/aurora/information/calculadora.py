@@ -51,3 +51,28 @@ class Calculadora:
             root2 = (self.b - discriminant) / (2 * self.a)
 
             return root1, root2
+
+    def porcentagem_de_relação(self):
+        if self.c is not None:
+            self.a = int(input("Digite o valor base: "))
+            self.b = int(input("Digite o valor da relação: "))
+            self.c = 100
+            p1 = self.a / self.b * self.c
+            print(f"a porcentagem de {self.a} em relação com {self.b} é: {p1}%")
+
+    def porcentagem_de_base(self):
+        if self.c is not None:
+            self.a = int(input("Digite o valor da parte a ser encontrada: "))
+            self.b = 100
+            self.c = int(input("Digite o valor da base: "))
+            p1 = self.a / self.b * self.c
+            print(f"a porcentagem de {self.a} em relação com {self.b} é: {p1}%")
+
+    def porcentagem_de_total(self):
+        if self.c is not None:
+            self.a = int(input("Digite o valor da parte: "))
+            self.b = int(input("Digite a porcentagem da parte: "))
+            self.c = 100
+            p1 = self.b / self.c
+            p2 = self.a / p1
+            print(f"a porcentagem de {self.a} em relação com {self.b} é: {p2}%")
