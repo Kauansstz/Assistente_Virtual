@@ -40,3 +40,14 @@ class Calculadora:
         else:
             response = self.a - self.b
         return response
+
+    def solve_quadratic(self):
+        # Calculando o discriminante
+        if self.c is not None:
+            discriminant = self.b**2 - 4 * self.a * self.c
+
+            # Calculando as duas raízes
+            root1 = (self.b + discriminant) / (2 * self.a)
+            root2 = (self.b - discriminant) / (2 * self.a)
+
+            return root1, root2

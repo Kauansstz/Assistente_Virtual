@@ -100,6 +100,8 @@ while True:
                                     print(
                                         "Por enquanto temos uma equação de somente com 4 números"
                                     )
+                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            print(calc.subtacao())
                         case "3":
                             response = input("Quantos números tem a conta?\nR: ")
                             match response:
@@ -148,6 +150,14 @@ while True:
                                     )
                             calc = Calculadora(number_1, number_2, number_3, number_4)
                             print(calc.multiplicar())
+                        case "5":
+                            number_1 = input("Digite o 1º número: ")
+                            number_2 = input("Digite o 2º número:")
+                            number_3 = input("Digite o 3º número: ")
+                            number_4 = None
+                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            print(calc.solve_quadratic())
+
                         case _:
                             print(
                                 "Temos somente operações de somar, substração, multiplicação e divisão, em breve adicionaremos mais equações"
