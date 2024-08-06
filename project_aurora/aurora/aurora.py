@@ -11,6 +11,7 @@ from importacao import (
     Climate,
     OpenDock,
     Tradulator,
+    RecebimentoEmail,
     adicionar_pessoa,
     exibir_dados,
 )
@@ -28,9 +29,9 @@ def clear_screen():
 with open("project_aurora/aurora/dicionario/dici.json") as arquivo:
     base = json.load(arquivo)
 
+
 day = Solution()
 day.solution()
-
 
 # Loop para tratar perguntas do usuário
 while True:
@@ -252,7 +253,11 @@ while True:
                     nome = input("Digite seu nome completo: ")
                     idade = int(input("Digite sua idade: "))
                     email = input("Digite seu email: ")
-                    pessoa = Pessoa(nome, idade, email)
+                    genero = input("Qual seu genêro?\nR:")
+                    pessoa = Pessoa(nome.lower(), idade, email.lower(), genero.lower())
+                    if pessoa == True:
+                        response = RecebimentoEmail(email)
+                        print(response.envio_email())
                     adicionar_pessoa(pessoa)
 
                 case "dados":

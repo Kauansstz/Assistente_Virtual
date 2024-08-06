@@ -1,5 +1,6 @@
 from time import sleep
 import datetime
+import json
 
 
 class Solution:
@@ -7,6 +8,9 @@ class Solution:
         pass
 
     def solution(self):
+        with open("project_aurora/aurora/dicionario/info.json") as data:
+            info = json.load(data)
+
         current_time = datetime.datetime.now().time()
         formatted_time = current_time.strftime("%H:%M")
 
@@ -15,19 +19,19 @@ class Solution:
 
         inicio_tarde = datetime.datetime.strptime("12:00", "%H:%M").time()
         final_tarde = datetime.datetime.strptime("17:59", "%H:%M").time()
-
+        for pessoa in info:
+            if pessoa["genero"] == "masculino":
+                tipo = "Senhor"
+            elif pessoa["genero"] == "feminino":
+                tipo = "Senhora"
+            else:
+                tipo = "Gênero não definido"
         if inicio_manha <= current_time <= final_manha:
-            response = "Bom dia!"
-
+            response = "Bom dia,"
         elif inicio_tarde <= current_time <= final_tarde:
-            response = "Boa Tarde!"
-
+            response = "Boa Tarde,"
         else:
-            response = "Boa Noite!"
-
-        print(response)
-        print("Sou Aurora!")
-        sleep(1)
-        print("Sua Assistente Pessoal.")
+            response = "Boa Noite,"
+        print(response, tipo)
         sleep(1)
         print("Como posso te ajudar?")

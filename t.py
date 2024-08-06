@@ -1,25 +1,16 @@
-import logging
+import json
 
-# Configuração do logging
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler("app.log"), logging.StreamHandler()],
-)
+# Carregar o JSON do arquivo
+with open("project_aurora/aurora/dicionario/info.json") as data:
+    info = json.load(data)
 
-logger = logging.getLogger(__name__)
+# Iterar sobre a lista de pessoas
+for pessoa in info:
+    if pessoa["genero"] == "masculino":
+        tipo = "Senhor"
+    elif pessoa["genero"] == "feminino":
+        tipo = "Senhora"
+    else:
+        tipo = "Gênero não definido"
 
-
-def divide(a, b):
-    try:
-        result = a / b
-        logger.info(f"Divisão bem-sucedida: {a} / {b} = {result}")
-        return result
-    except ZeroDivisionError:
-        logger.error("Tentativa de divisão por zero")
-        return None
-
-
-# Testando a função
-divide(10, 2)
-divide(10, 0)
+    print(f"{pessoa['name']}: {tipo}")

@@ -2,16 +2,20 @@ import json
 
 
 class Pessoa:
-    def __init__(self, name, idade, email):
+    def __init__(self, name, idade, email, genero):
         self.name = name
         self.idade = idade
         self.email = email
+        self.genero = genero
 
     def get_nome(self):
         self.name
 
     def get_email(self):
         self.email
+
+    def get_genero(self):
+        self.genero
 
     def get_idade(self):
         try:
@@ -32,7 +36,8 @@ class Pessoa:
             Informações coletadas:
             Nome: {self.name},
             Idade: {self.idade},
-            E-mail: {self.email}
+            E-mail: {self.email},
+            Genêro: {self.genero}
             """
         )
         response = input(
@@ -42,17 +47,24 @@ class Pessoa:
         match response.lower():
             case "s":
                 print("Cadastro completado!")
-            case _:
+            case "n":
                 print("Por favor corrija os dados")
+            case _:
+                print("Não entendi o que digitou")
 
     def to_dict(self):
         """Converte a instância da classe Pessoa em um dicionário."""
-        return {"name": self.name, "idade": self.idade, "email": self.email}
+        return {
+            "name": self.name,
+            "idade": self.idade,
+            "email": self.email,
+            "genero": self.genero,
+        }
 
     @classmethod
     def from_dict(cls, data):
         """Cria uma instância da classe Pessoa a partir de um dicionário."""
-        return cls(data["name"], data["idade"], data["email"])
+        return cls(data["name"], data["idade"], data["email"], data["genero"])
 
 
 def carregar_dados(arquivo):
@@ -80,4 +92,6 @@ def exibir_dados(arquivo="data.json"):
     dados = carregar_dados(arquivo)
     for data in dados:
         pessoa = Pessoa.from_dict(data)
-        print(f"Nome: {pessoa.name}, Idade: {pessoa.idade}, Email: {pessoa.email}")
+        print(
+            f"Nome: {pessoa.name}, Idade: {pessoa.idade}, Email: {pessoa.email}, Genero: {pessoa.genero}"
+        )
