@@ -13,13 +13,13 @@ class RecebimentoEmail:
         email.To = self.email
         email.Subject = "Confirmação de email"
         email.HTMLBody = f"""
-    <h1>Confirmação de E-mail</h1>
+        <h1>Confirmação de E-mail</h1>
 
-    <p>Se recebeu esse email, quer dizer que se email foi cadastrado no sistema com sucesso</p>
-    <p>Tenha um ótimo Dia/Noite</p>
+        <p>Se recebeu esse email, quer dizer que se email foi cadastrado no sistema com sucesso</p>
+        <p>Tenha um ótimo Dia/Noite</p>
 
-    <p>Para feedback sobre o email</p>
-    <p>Entre em contato: (48)998345181</p>
-    """
+        <p>Para feedback sobre o email</p>
+        <p>Entre em contato: (48)998345181</p>
+        """
         email.Send()
         print("Email Enviado")

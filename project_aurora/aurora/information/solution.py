@@ -8,7 +8,7 @@ class Solution:
         pass
 
     def solution(self):
-        with open("project_aurora/aurora/dicionario/info.json") as data:
+        with open("info.json") as data:
             info = json.load(data)
 
         current_time = datetime.datetime.now().time()
@@ -24,14 +24,14 @@ class Solution:
                 tipo = "Senhor"
             elif pessoa["genero"] == "feminino":
                 tipo = "Senhora"
-            else:
-                tipo = "Gênero não definido"
+            elif pessoa["genero"] == "nao quero selecionar":
+                tipo = " "
         if inicio_manha <= current_time <= final_manha:
-            response = "Bom dia,"
+            response = "Bom dia"
         elif inicio_tarde <= current_time <= final_tarde:
-            response = "Boa Tarde,"
+            response = "Boa Tarde"
         else:
-            response = "Boa Noite,"
-        print(response, tipo)
+            response = "Boa Noite"
+        print(response)
         sleep(1)
-        print("Como posso te ajudar?")
+        print(f"Como posso ajudar o(a) {tipo}?")

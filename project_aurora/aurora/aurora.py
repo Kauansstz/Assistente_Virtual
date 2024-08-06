@@ -253,12 +253,26 @@ while True:
                     nome = input("Digite seu nome completo: ")
                     idade = int(input("Digite sua idade: "))
                     email = input("Digite seu email: ")
-                    genero = input("Qual seu genêro?\nR:")
-                    pessoa = Pessoa(nome.lower(), idade, email.lower(), genero.lower())
-                    if pessoa == True:
-                        response = RecebimentoEmail(email)
-                        print(response.envio_email())
-                    adicionar_pessoa(pessoa)
+                    genero = input(
+                        "Selecione o seu genêro:\n[1] Masculino;\n[2] Femenino\n[3]nao quero selecionar\nR:"
+                    )
+                    confirm_years = idade
+                    match genero:
+                        case "1":
+                            genero = "masculino"
+                        case "2":
+                            genero = "feminino"
+                        case "3":
+                            genero = "nao quero selecionar"
+                    if confirm_years:
+                        pessoa = Pessoa(
+                            nome.lower(), idade, email.lower(), genero.lower()
+                        )
+                        pessoa.get_idade(confirm_years)
+                        if pessoa:
+                            response = RecebimentoEmail(email)
+                            response.envio_email()
+                        adicionar_pessoa(pessoa)
 
                 case "dados":
                     exibir_dados()

@@ -17,7 +17,7 @@ class Pessoa:
     def get_genero(self):
         self.genero
 
-    def get_idade(self):
+    def get_idade(self, confirm_data):
         try:
             years = self.idade
             if years >= int("18"):
@@ -53,7 +53,7 @@ class Pessoa:
                 print("Não entendi o que digitou")
 
     def to_dict(self):
-        """Converte a instância da classe Pessoa em um dicionário."""
+
         return {
             "name": self.name,
             "idade": self.idade,
@@ -77,11 +77,13 @@ def carregar_dados(arquivo):
 
 
 def salvar_dados(arquivo, dados):
+
     with open(arquivo, "w") as f:
         json.dump(dados, f, indent=4)
 
 
-def adicionar_pessoa(pessoa, arquivo="data.json"):
+def adicionar_pessoa(pessoa, arquivo="info.json"):
+
     dados = carregar_dados(arquivo)
     dados.append(pessoa.to_dict())
     salvar_dados(arquivo, dados)
