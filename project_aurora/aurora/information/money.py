@@ -13,20 +13,20 @@ class Money:
         moeda = teste.json()
         money = type_money
         match money.lower():
-            case "[1]":
+            case "1":
                 money_dollar = moeda["USDBRL"]["bid"]
                 money_dollar_float = float(money_dollar)
                 money_round = round(money_dollar_float, 2)
                 return print("Cotação do Dolar está $", money_round)
 
-            case "[2]":
+            case "2":
                 sleep(1)
                 money_euro = moeda["EURBRL"]["bid"]
                 money_euro_float = float(money_euro)
                 money_round = round(money_euro_float, 2)
                 return print("Cotação do Euro está $", money_round)
 
-            case "[3]":
+            case "3":
                 sleep(1)
                 money_btn = moeda["BTCBRL"]["bid"]
                 money_btn_float = float(money_btn)
