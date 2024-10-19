@@ -29,7 +29,7 @@ def clear_screen():
 with open("project_aurora/aurora/dicionario/dici.json") as arquivo:
     base = json.load(arquivo)
 
-
+clear_screen()
 day = Solution()
 day.solution()
 

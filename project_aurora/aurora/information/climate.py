@@ -11,4 +11,4 @@ class Climate:
         api = "https://wttr.in/palhoça"  # Getting an api with weather, percentage of rain at 4 times (Morning, beginning/Late afternoon and Night)
         response = requests.get(api)
         CLIMA = response.text
-        return CLIMA
+        return print(CLIMA)
