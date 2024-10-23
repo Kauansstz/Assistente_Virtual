@@ -1,21 +1,8 @@
 import os
 import json
 from time import sleep
-from importacao import (
-    Pessoa,
-    Money,
-    Calculadora,
-    Calendary,
-    About,
-    Solution,
-    Climate,
-    OpenDock,
-    Tradulator,
-    RecebimentoEmail,
-    adicionar_pessoa,
-    exibir_dados,
-)
-
+import importacao as imp
+  
 
 # Limpar a tela de forma portátil
 def clear_screen():
@@ -30,7 +17,7 @@ with open("project_aurora/aurora/dicionario/dici.json") as arquivo:
     base = json.load(arquivo)
 
 clear_screen()
-day = Solution()
+day = imp.Solution()
 day.solution()
 
 # Loop para tratar perguntas do usuário
@@ -48,18 +35,18 @@ while True:
                 case "calendario":
                     sleep(1)
                     clear_screen()
-                    response = Calendary()
+                    response = imp.Calendary()
                     for i in response.calendary():
                         print(i)
 
                 case "about":
-                    response = About()
+                    response = imp.About()
                     response.about()
 
                 case "clima":
                     sleep(1)
                     clear_screen()
-                    response = Climate()
+                    response = imp.Climate()
                     response.climate_of_the_region()
 
                 case "calcular":
@@ -88,7 +75,7 @@ while True:
                                     print(
                                         "Por enquanto temos uma equação de somente com 4 números"
                                     )
-                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            calc = imp.Calculadora(number_1, number_2, number_3, number_4)
                             print(calc.somar())
                         case "2":
                             response = input("Quantos números tem a conta?\nR: ")
@@ -112,7 +99,7 @@ while True:
                                     print(
                                         "Por enquanto temos uma equação de somente com 4 números"
                                     )
-                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            calc = imp.Calculadora(number_1, number_2, number_3, number_4)
                             print(calc.subtacao())
                         case "3":
                             response = input("Quantos números tem a conta?\nR: ")
@@ -136,7 +123,7 @@ while True:
                                     print(
                                         "Por enquanto temos uma equação de somente com 4 números"
                                     )
-                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            calc = imp.Calculadora(number_1, number_2, number_3, number_4)
                             print(calc.divisao())
                         case "4":
                             response = input("Quantos números tem a conta?\nR: ")
@@ -160,14 +147,14 @@ while True:
                                     print(
                                         "Por enquanto temos uma equação de somente com 4 números"
                                     )
-                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            calc = imp.Calculadora(number_1, number_2, number_3, number_4)
                             print(calc.multiplicar())
                         case "5":
                             number_1 = input("Digite o 1º número: ")
                             number_2 = input("Digite o 2º número:")
                             number_3 = input("Digite o 3º número: ")
                             number_4 = None
-                            calc = Calculadora(number_1, number_2, number_3, number_4)
+                            calc = imp.Calculadora(number_1, number_2, number_3, number_4)
                             print(calc.solve_quadratic())
 
                         case _:
@@ -190,14 +177,14 @@ while True:
                         site_name = input(
                             "Digite o nome do site que deseja abrir (Para melhorar sua experiência, coloque o nome do site 100% preciso)\nR: "
                         ).strip()
-                        response = OpenDock()
+                        response = imp.OpenDock()
                         response.open_app_and_browse(app_name, site_name)
                     else:
                         sleep(1)
                         app_name = input(
                             "Digite o nome do aplicativo que deseja abrir\nR: "
                         ).strip()
-                        response = OpenDock()
+                        response = imp.OpenDock()
                         response.open_app(app_name)
 
                 case "dock":
@@ -217,10 +204,10 @@ while True:
                             "Digite o nome do documento que deseja abrir\nR: "
                         ).strip()
                         if dock_type == "txt":
-                            response = OpenDock()
+                            response = imp.OpenDock()
                             response.open_dock_txt(dock_name)
                         elif dock_type == "xlsx":
-                            response = OpenDock()
+                            response = imp.OpenDock()
                             response.open_dock_xlsx(dock_name)
                         # Adicione mais verificações se necessário
 
@@ -236,7 +223,7 @@ while True:
                     print("[3] Bitcoin")
                     sleep(1)
                     type_money = input("R: ").lower().strip()
-                    response = Money()
+                    response = imp.Money()
                     response.cote(type_money)
 
                 case "esta":
@@ -265,20 +252,20 @@ while True:
                         case "3":
                             genero = "nao quero selecionar"
                     if confirm_years:
-                        pessoa = Pessoa(
+                        pessoa = imp.Pessoa(
                             nome.lower(), idade, email.lower(), genero.lower()
                         )
                         pessoa.get_idade(confirm_years)
                         if pessoa:
-                            response = RecebimentoEmail(email)
+                            response = imp.RecebimentoEmail(email)
                             response.envio_email()
-                        adicionar_pessoa(pessoa)
+                        imp.adicionar_pessoa(pessoa)
 
                 case "dados":
-                    exibir_dados()
+                    imp.exibir_dados()
 
                 case "traduzir":
-                    response = Tradulator()
+                    response = imp.Tradulator()
                     response.tradulator()
     if not found:
         sleep(1)
