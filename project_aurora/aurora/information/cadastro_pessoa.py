@@ -63,7 +63,6 @@ class Pessoa:
 
     @classmethod
     def from_dict(cls, data):
-        """Cria uma instância da classe Pessoa a partir de um dicionário."""
         return cls(data["name"], data["idade"], data["email"], data["genero"])
 
 
@@ -83,14 +82,12 @@ def salvar_dados(arquivo, dados):
 
 
 def adicionar_pessoa(pessoa, arquivo="info.json"):
-
     dados = carregar_dados(arquivo)
     dados.append(pessoa.to_dict())
     salvar_dados(arquivo, dados)
 
 
 def exibir_dados(arquivo="data.json"):
-    """Exibe os dados do arquivo JSON."""
     dados = carregar_dados(arquivo)
     for data in dados:
         pessoa = Pessoa.from_dict(data)
